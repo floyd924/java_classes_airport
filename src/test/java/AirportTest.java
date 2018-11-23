@@ -89,8 +89,24 @@ public class AirportTest {
         //flight1 now has 4 passengers
         airport1.assignBestPlane(flight1, airport1.getHanger2());
         assertEquals(PlaneType.TWINOTTER, flight1.getPlane().getPlaneType());
-
-
     }
+
+    @Test
+    public void canFindTheNextSmallestPlane(){
+        airport1.addPlaneToHanger(plane3, airport1.getHanger2());
+        airport1.addPlaneToHanger(plane1, airport1.getHanger2());
+        airport1.addPlaneToHanger(plane2, airport1.getHanger2());
+        airport1.sortHanger(airport1.getHanger2());
+        //hanger is now sorted, smallest to largest
+        flight1.bookPassenger(person1);
+        flight1.bookPassenger(person2);
+        flight1.bookPassenger(person3);
+        flight1.bookPassenger(person4);
+        //flight1 now has 4 passengers
+        airport1.assignNextBestPlane(flight1, airport1.getHanger2());
+        assertEquals(PlaneType.LEARJET, flight1.getPlane().getPlaneType());
+    }
+
+
 
 }

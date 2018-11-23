@@ -41,7 +41,7 @@ public class Airport {
         hanger.sort(Comparator.comparingInt(Plane::getCapacity));
     }
 
-    public void assignBestPlane(Flight flight, ArrayList<Plane> hanger){
+    public ArrayList returnPlaneArray(Flight flight, ArrayList<Plane> hanger){
         int booked = flight.getPassengerBookedCount();
         ArrayList<Plane> suitablePlanes = new ArrayList();
 
@@ -50,13 +50,19 @@ public class Airport {
                 suitablePlanes.add(plane);
             };
         };
-        //if plane.capacity is >= booked,
-        //add to a new arraylist
+        return suitablePlanes;
+    }
 
+    public void assignBestPlane(Flight flight, ArrayList<Plane> hanger){
+        ArrayList<Plane> suitablePlanes = returnPlaneArray(flight, hanger);
         Plane bestPlane = suitablePlanes.get(0);
-
-
         flight.assignPlane(bestPlane);
+    }
+
+    public void assignNextBestPlane(Flight flight, ArrayList<Plane> hanger){
+        ArrayList<Plane> suitablePlanes = returnPlaneArray(flight, hanger);
+        Plane nextBestPlane = suitablePlanes.get(1);
+        flight.assignPlane(nextBestPlane);
     }
 
 }
