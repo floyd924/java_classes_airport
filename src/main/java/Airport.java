@@ -1,4 +1,6 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Airport {
 
@@ -14,5 +16,47 @@ public class Airport {
         this.departures = new ArrayList<>();
     }
 
+    public ArrayList<Plane> getHanger1() {
+        return this.hanger1;
+    }
+
+    public ArrayList<Plane> getHanger2() {
+        return this.hanger2;
+    }
+
+    public void addPlaneToHanger(Plane plane, ArrayList hanger){
+        hanger.add(plane);
+    }
+
+    public int getHangerSize(ArrayList hanger){
+        return hanger.size();
+    }
+
+    //sort the hanger small to big
+    //make a new array of planes that are big enough
+    //give me first array item
+
+    public void sortHanger(ArrayList hanger){
+        //hanger.plane.PlaneType.
+        hanger.sort(Comparator.comparingInt(Plane::getCapacity));
+    }
+
+    public void assignBestPlane(Flight flight, ArrayList<Plane> hanger){
+        int booked = flight.getPassengerBookedCount();
+        ArrayList<Plane> suitablePlanes = new ArrayList();
+
+        for (Plane plane : hanger) {
+            if (plane.getCapacity() >= booked) {
+                suitablePlanes.add(plane);
+            };
+        };
+        //if plane.capacity is >= booked,
+        //add to a new arraylist
+
+        Plane bestPlane = suitablePlanes.get(0);
+
+
+        flight.assignPlane(bestPlane);
+    }
 
 }
