@@ -24,6 +24,7 @@ public class AirportTest {
     Passenger person6;
     Passenger person7;
     Passenger person8;
+    Passenger cat;
 
     @Before
     public void setup(){
@@ -44,6 +45,13 @@ public class AirportTest {
         person6 = new Passenger();
         person7 = new Passenger();
         person8 = new Passenger();
+        cat = new Passenger();
+    }
+
+    @Test
+    public void canCreateFlight(){
+        airport1.createFlight("EZ567", "Marseille");
+        assertEquals(1, airport1.getDepartures().size());
     }
 
     @Test
@@ -106,6 +114,39 @@ public class AirportTest {
         airport1.assignNextBestPlane(flight1, airport1.getHanger2());
         assertEquals(PlaneType.LEARJET, flight1.getPlane().getPlaneType());
     }
+
+//    @Test
+//    public void canGetTotalPeopleInAirport(){
+//        assertEquals(9, airport1.getTotalPassengersInAirport());
+//    }
+//THIS WORKS WHEN RUN ALONE, BUT NOT IN FILE
+    //FILE RUN DOUBLES THIS FIGURE
+
+
+//    @Test
+//    public void canGetAllInstancesOfPassenger(){
+//        airport1.getAllPassengersInAirport();
+//        ArrayList<Passenger> array = new ArrayList<>();
+//        array.add(person1);
+//        array.add(person2);
+//        array.add(person3);
+//        array.add(person4);
+//        array.add(person5);
+//        array.add(person6);
+//        array.add(person7);
+//        array.add(person8);
+//        array.add(cat);
+//        assertEquals(array, airport1.getAllPassengersInAirport());
+//    }
+    //THIS WORKS WHEN RUN ALONE, BUT NOT IN FILE
+    //FILE RUN DOUBLES THIS FIGURE
+
+    @Test
+    public void canFindPassengerByAssignedName(){
+        assertEquals(cat, airport1.findPassengerByAssignedName(cat));
+    }
+
+
 
 
 

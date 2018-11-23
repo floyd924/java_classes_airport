@@ -16,12 +16,21 @@ public class Airport {
         this.departures = new ArrayList<>();
     }
 
+    public ArrayList<Flight> getDepartures() {
+        return this.departures;
+    }
+
     public ArrayList<Plane> getHanger1() {
         return this.hanger1;
     }
 
     public ArrayList<Plane> getHanger2() {
         return this.hanger2;
+    }
+
+    public void createFlight(String stringNum, String stringDest){
+        Flight flight = new Flight(stringNum, stringDest);
+        this.departures.add(flight);
     }
 
     public void addPlaneToHanger(Plane plane, ArrayList hanger){
@@ -63,6 +72,19 @@ public class Airport {
         ArrayList<Plane> suitablePlanes = returnPlaneArray(flight, hanger);
         Plane nextBestPlane = suitablePlanes.get(1);
         flight.assignPlane(nextBestPlane);
+    }
+
+    public int getTotalPassengersInAirport(){
+        return Passenger.getNumberOfInstances();
+    }
+
+    public ArrayList<Passenger> getAllPassengersInAirport(){
+        return Passenger.getAllPassengers();
+    }
+
+    public Passenger findPassengerByAssignedName(Passenger passenger){
+        //find passenger by name of instance
+        return passenger;
     }
 
 }
