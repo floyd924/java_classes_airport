@@ -45,4 +45,9 @@ public class PlaneTest {
 //        plane1.addPassenger(person1);
 //        assertEquals(person1, plane1.getPassengers());
 //    }
+
+    @Test
+    public void canGetLuggageAllowance(){
+        assertEquals(10, plane1.getLuggageAllowance());
+    }
 }

@@ -146,6 +146,13 @@ public class AirportTest {
         assertEquals(cat, airport1.findPassengerByAssignedName(cat));
     }
 
+    @Test
+    public void addBaggageToOnePerson(){
+        person1.addBaggage(4);
+        person1.addBaggage(6);
+        assertEquals(10, person1.getBaggage());
+    }
+
 
 
 
