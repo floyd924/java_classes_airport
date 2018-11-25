@@ -72,4 +72,5 @@ public class FlightTest {
         flight1.boardPlane();
         assertEquals(3, flight1.getPlane().getPassengerCount());
     }
+
 }

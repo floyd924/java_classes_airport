@@ -50,8 +50,12 @@ public class Flight {
     public void boardPlane(){
         //for each person in this.getPassengersBooked()
             // board this.passenger(each person)
+        int luggageCheckedIn = 0;
         for (Passenger person : this.passengersBooked){
-            this.boardPassenger(person);
+            if (( luggageCheckedIn + person.getBaggage())<= this.plane.getLuggageAllowance()){
+                this.boardPassenger(person);
+                luggageCheckedIn += person.getBaggage();
+            }
         }
     }
 
